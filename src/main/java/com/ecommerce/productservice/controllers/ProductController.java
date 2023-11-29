@@ -1,23 +1,35 @@
 package com.ecommerce.productservice.controllers;
 
-import org.springframework.stereotype.Controller;
+import com.ecommerce.productservice.dtos.GenericProductDto;
+import com.ecommerce.productservice.services.ProductService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/products")
 public class ProductController {
-    @GetMapping
-    public void getAllProducts(){
+    private ProductService productService;
 
+    //Constructor Injection
+    public ProductController(@Qualifier("fakeStoreProductServiceImpl") ProductService productService) {
+        this.productService = productService;
+    }
+
+    @GetMapping
+    public List<GenericProductDto> getAllProducts(){
+        return this.productService.getAllProducts();
     }
 
     @GetMapping("/{id}")
-    public String getProductById(@PathVariable("id") Long id){
-        return "Product @@@@ with id " + id;
+    public GenericProductDto getProductById(@PathVariable("id") Long id){
+        return this.productService.getProductById(id);
     }
 
-    public void createProduct(){
-
+    @PostMapping
+    public GenericProductDto createProduct(@RequestBody GenericProductDto genericProductDto){
+        return this.productService.createProduct(genericProductDto);
     }
 
     public void updateProduct(){
@@ -25,8 +37,8 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteProductById(@PathVariable("id") Long id){
-
+    public boolean deleteProductById(@PathVariable("id") Long id){
+        return this.productService.deleteProductById(id);
     }
 
     public void getAllCategories(){
