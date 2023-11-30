@@ -1,17 +1,15 @@
 package com.ecommerce.productservice.dtos;
 
-import com.ecommerce.productservice.models.Category;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.List;
 
 @Setter
 @Getter
 public class FakeStoreProductDto {
+    private Long id;
     private String title;
     private String description;
-    private String images;
+    private String image;
     private double price;
     private int stock;
     private String category;

@@ -1,12 +1,9 @@
 package com.ecommerce.productservice.controllers;
 
-import com.ecommerce.productservice.dtos.ExceptionDto;
+import com.ecommerce.productservice.dtos.GenericCategoryDto;
 import com.ecommerce.productservice.dtos.GenericProductDto;
 import com.ecommerce.productservice.exceptions.ProductNotFoundException;
 import com.ecommerce.productservice.services.ProductService;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,10 +11,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/products")
 public class ProductController {
-    private ProductService productService;
+    private final ProductService productService;
 
     //Constructor Injection
-    public ProductController(@Qualifier("fakeStoreProductServiceImpl") ProductService productService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
@@ -36,8 +33,9 @@ public class ProductController {
         return this.productService.createProduct(genericProductDto);
     }
 
-    public void updateProduct(){
-
+    @PutMapping("/{id}")
+    public GenericProductDto updateProduct(@PathVariable("id") Long id,@RequestBody GenericProductDto genericProductDto){
+        return this.productService.updateProduct(id, genericProductDto);
     }
 
     @DeleteMapping("/{id}")
@@ -45,11 +43,13 @@ public class ProductController {
         return this.productService.deleteProductById(id);
     }
 
-    public void getAllCategories(){
-
+    @GetMapping("/categories")
+    public List<GenericCategoryDto> getAllCategories(){
+        return this.productService.getAllCategories();
     }
 
-    public void getProductByCategory(){
-
+    @GetMapping("/category/{category}")
+    public List<GenericProductDto> getProductByCategory(@PathVariable("category") String category){
+        return this.productService.getProductByCategory(category);
     }
 }

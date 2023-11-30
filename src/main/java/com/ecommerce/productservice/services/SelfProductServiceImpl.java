@@ -1,5 +1,6 @@
 package com.ecommerce.productservice.services;
 
+import com.ecommerce.productservice.dtos.GenericCategoryDto;
 import com.ecommerce.productservice.dtos.GenericProductDto;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +24,8 @@ public class SelfProductServiceImpl implements ProductService{
     }
 
     @Override
-    public void updateProduct() {
-
+    public GenericProductDto updateProduct(Long id, GenericProductDto genericProductDto) {
+        return null;
     }
 
     @Override
@@ -33,12 +34,12 @@ public class SelfProductServiceImpl implements ProductService{
     }
 
     @Override
-    public void getAllCategories() {
-
+    public List<GenericCategoryDto> getAllCategories() {
+        return null;
     }
 
     @Override
-    public void getProductByCategory() {
-
+    public List<GenericProductDto> getProductByCategory(String category) {
+        return null;
     }
 }

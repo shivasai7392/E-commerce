@@ -1,6 +1,6 @@
 package com.ecommerce.productservice.services;
 
-import com.ecommerce.productservice.dtos.FakeStoreProductDto;
+import com.ecommerce.productservice.dtos.GenericCategoryDto;
 import com.ecommerce.productservice.dtos.GenericProductDto;
 import com.ecommerce.productservice.exceptions.ProductNotFoundException;
 
@@ -10,8 +10,8 @@ public interface ProductService {
     List<GenericProductDto> getAllProducts();
     GenericProductDto getProductById(Long id) throws ProductNotFoundException;
     GenericProductDto createProduct(GenericProductDto genericProductDto);
-    void updateProduct();
+    GenericProductDto updateProduct(Long id, GenericProductDto genericProductDto);
     GenericProductDto deleteProductById(Long id);
-    void getAllCategories();
-    void getProductByCategory();
+    List<GenericCategoryDto> getAllCategories();
+    List<GenericProductDto> getProductByCategory(String category);
 }
