@@ -10,7 +10,7 @@ import java.util.List;
 public class GenericProductDto {
     private String title;
     private String description;
-    private List<String> images;
+    private String image;
     private double price;
     private int stock;
     private String category;

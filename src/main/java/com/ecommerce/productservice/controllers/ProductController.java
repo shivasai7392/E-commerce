@@ -1,8 +1,12 @@
 package com.ecommerce.productservice.controllers;
 
+import com.ecommerce.productservice.dtos.ExceptionDto;
 import com.ecommerce.productservice.dtos.GenericProductDto;
+import com.ecommerce.productservice.exceptions.ProductNotFoundException;
 import com.ecommerce.productservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +27,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public GenericProductDto getProductById(@PathVariable("id") Long id){
+    public GenericProductDto getProductById(@PathVariable("id") Long id) throws ProductNotFoundException {
         return this.productService.getProductById(id);
     }
 
@@ -37,7 +41,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public boolean deleteProductById(@PathVariable("id") Long id){
+    public GenericProductDto deleteProductById(@PathVariable("id") Long id){
         return this.productService.deleteProductById(id);
     }
 

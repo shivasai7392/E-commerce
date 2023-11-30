@@ -11,8 +11,8 @@ import java.util.List;
 public class FakeStoreProductDto {
     private String title;
     private String description;
-    private List<String> images;
+    private String images;
     private double price;
     private int stock;
-    private FakeStoreCategoryDto category;
+    private String category;
 }

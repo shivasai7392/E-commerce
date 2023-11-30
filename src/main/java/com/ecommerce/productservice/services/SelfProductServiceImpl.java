@@ -13,7 +13,7 @@ public class SelfProductServiceImpl implements ProductService{
     }
 
     @Override
-    public GenericProductDto getProductById(Long id) {
+    public GenericProductDto getProductById(Long id){
         return null;
     }
 
@@ -28,8 +28,8 @@ public class SelfProductServiceImpl implements ProductService{
     }
 
     @Override
-    public boolean deleteProductById(Long id) {
-        return false;
+    public GenericProductDto deleteProductById(Long id) {
+        return null;
     }
 
     @Override
