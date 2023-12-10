@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "tpc_students")
+//@Entity(name = "tpc_students")
 public class Student extends User {
     private String collegeName;
     private double psp;

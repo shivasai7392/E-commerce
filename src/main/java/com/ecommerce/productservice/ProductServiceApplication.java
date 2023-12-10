@@ -1,10 +1,22 @@
 package com.ecommerce.productservice;
 
+import com.ecommerce.productservice.models.Category;
+import com.ecommerce.productservice.models.Price;
+import com.ecommerce.productservice.models.Product;
+import com.ecommerce.productservice.repositories.CategoryRepository;
+import com.ecommerce.productservice.repositories.PriceRepository;
+import com.ecommerce.productservice.repositories.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
 @SpringBootApplication
+@Transactional
 public class ProductServiceApplication implements CommandLineRunner {
 
 //    private final MentorRepository mentorRepository;
@@ -42,6 +54,15 @@ public class ProductServiceApplication implements CommandLineRunner {
 //        this.userRepository.save(user);
 //
 //    }
+    private final CategoryRepository categoryRepository;
+    private final ProductRepository productRepository;
+    private final PriceRepository priceRepository;
+
+    public ProductServiceApplication(CategoryRepository categoryRepository, ProductRepository productRepository, PriceRepository priceRepository) {
+        this.categoryRepository = categoryRepository;
+        this.productRepository = productRepository;
+        this.priceRepository = priceRepository;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(ProductServiceApplication.class, args);
@@ -50,5 +71,37 @@ public class ProductServiceApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+//        Category category = new Category();
+//        category.setName("Electronics");
+//        category.setDescription("Electronics items");
+//        Category savedCategory =  this.categoryRepository.save(category);
+//
+//        Price price = new Price();
+//        price.setCurrency("USD");
+//        price.setValue(1000);
+////        Price savedPrice = this.priceRepository.save(price);
+//
+//
+//        Product product = new Product();
+//        product.setTitle("Laptop");
+//        product.setDescription("Laptop");
+//        product.setStock(10);
+//        product.setPrice(price);
+//        product.setImage("https://picsum.photos/200/300");
+//        product.setCategory(savedCategory);
+//
+//        this.productRepository.save(product);
+
+//        this.productRepository.deleteById(UUID.fromString("1ac20edf-e907-4801-8661-d0d0d8c4aa17"));
+//        this.priceRepository.deleteById(UUID.fromString("f532b29b-ba6a-4c16-9c3e-794ddc430161"));
+
+        Optional<Category> optionalCategory = this.categoryRepository.findById(UUID.fromString("149bcf77-bed0-4ea1-af2d-9f033a3caac5"));
+        if (optionalCategory.isEmpty()) {
+            throw new Exception("Category not found");
+        }
+        Category category = optionalCategory.get();
+        System.out.println(category.getName());
+        List<Product> products = category.getProducts();
+        System.out.println(products.size());
     }
 }

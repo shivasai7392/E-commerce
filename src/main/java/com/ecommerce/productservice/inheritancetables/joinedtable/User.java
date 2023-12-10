@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "j_users")
+//@Entity(name = "j_users")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
     @Id

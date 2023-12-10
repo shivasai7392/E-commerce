@@ -3,8 +3,8 @@ package com.ecommerce.productservice.inheritancetables.singletable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("stUserRepository")
-public interface UserRepository extends JpaRepository<User, Long> {
-    @Override
-    <S extends User> S save(S entity);
-}
+//@Repository("stUserRepository")
+//public interface UserRepository extends JpaRepository<User, Long> {
+//    @Override
+//    <S extends User> S save(S entity);
+//}

@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "ms_tas")
+//@Entity(name = "ms_tas")
 public class Ta extends User{
     private double salary;
     private double averageRating;

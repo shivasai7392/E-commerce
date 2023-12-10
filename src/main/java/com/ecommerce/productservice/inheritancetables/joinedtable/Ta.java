@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "j_tas")
+//@Entity(name = "j_tas")
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Ta extends User {
     private double salary;

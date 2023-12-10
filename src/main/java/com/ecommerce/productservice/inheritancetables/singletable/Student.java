@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "st_students")
+//@Entity(name = "st_students")
 @DiscriminatorValue(value = "2")
 public class Student extends User {
     private String collegeName;
