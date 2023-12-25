@@ -2,12 +2,19 @@ package com.ecommerce.productservice.services;
 
 import com.ecommerce.productservice.dtos.GenericCategoryDto;
 import com.ecommerce.productservice.dtos.GenericProductDto;
+import com.ecommerce.productservice.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service("selfProductServiceImpl")
 public class SelfProductServiceImpl implements ProductService{
+    private final ProductRepository productRepository;
+    SelfProductServiceImpl(ProductRepository productRepository){
+
+        this.productRepository = productRepository;
+    }
     @Override
     public List<GenericProductDto> getAllProducts() {
         return null;
@@ -15,7 +22,17 @@ public class SelfProductServiceImpl implements ProductService{
 
     @Override
     public GenericProductDto getProductById(Long id){
-        return null;
+        GenericProductDto genericProductDto = new GenericProductDto();
+        this.productRepository.findById(UUID.fromString("89729269-8554-4e4e-a76c-78627dfbc549")).ifPresent(product -> {
+            genericProductDto.setId(1L);
+            genericProductDto.setTitle(product.getTitle());
+            genericProductDto.setDescription(product.getDescription());
+            genericProductDto.setImage(product.getImage());
+            genericProductDto.setPrice(product.getPrice().getValue());
+            genericProductDto.setStock(product.getStock());
+            genericProductDto.setCategory(product.getCategory().getName());
+        });
+        return genericProductDto;
     }
 
     @Override

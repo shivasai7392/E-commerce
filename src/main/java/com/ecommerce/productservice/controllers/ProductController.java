@@ -4,6 +4,7 @@ import com.ecommerce.productservice.dtos.GenericCategoryDto;
 import com.ecommerce.productservice.dtos.GenericProductDto;
 import com.ecommerce.productservice.exceptions.ProductNotFoundException;
 import com.ecommerce.productservice.services.ProductService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class ProductController {
     private final ProductService productService;
 
     //Constructor Injection
-    public ProductController(ProductService productService) {
+    public ProductController(@Qualifier("selfProductServiceImpl") ProductService productService) {
         this.productService = productService;
     }
 

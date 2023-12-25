@@ -78,30 +78,42 @@ public class ProductServiceApplication implements CommandLineRunner {
 //
 //        Price price = new Price();
 //        price.setCurrency("USD");
-//        price.setValue(1000);
-////        Price savedPrice = this.priceRepository.save(price);
+//        price.setValue(10000);
+//        Price savedPrice = this.priceRepository.save(price);
 //
+//        Optional<Category> optionalCategory = this.categoryRepository.findById(UUID.fromString("149bcf77-bed0-4ea1-af2d-9f033a3caac5"));
+//        if (optionalCategory.isEmpty()) {
+//            throw new Exception("Category not found");
+//        }
+//        Category category = optionalCategory.get();
 //
 //        Product product = new Product();
-//        product.setTitle("Laptop");
-//        product.setDescription("Laptop");
+//        product.setTitle("Laptop2");
+//        product.setDescription("Laptop2");
 //        product.setStock(10);
 //        product.setPrice(price);
 //        product.setImage("https://picsum.photos/200/300");
-//        product.setCategory(savedCategory);
+//        product.setCategory(category);
 //
 //        this.productRepository.save(product);
 
 //        this.productRepository.deleteById(UUID.fromString("1ac20edf-e907-4801-8661-d0d0d8c4aa17"));
 //        this.priceRepository.deleteById(UUID.fromString("f532b29b-ba6a-4c16-9c3e-794ddc430161"));
 
-        Optional<Category> optionalCategory = this.categoryRepository.findById(UUID.fromString("149bcf77-bed0-4ea1-af2d-9f033a3caac5"));
-        if (optionalCategory.isEmpty()) {
-            throw new Exception("Category not found");
-        }
-        Category category = optionalCategory.get();
-        System.out.println(category.getName());
-        List<Product> products = category.getProducts();
-        System.out.println(products.size());
+//        System.out.println(category.getName());
+//        List<Product> products = category.getProducts();
+//        System.out.println(products.size());
+
+//        List<Product> products = this.productRepository.findByPriceValueGreaterThanEqual(5000);
+//        for(Product product: products) {
+//            System.out.println(product.getTitle());
+//        }
+
+//        Optional<Product> optionalProduct = this.productRepository.findByTitle("Laptop");
+//        if (optionalProduct.isEmpty()) {
+//            throw new Exception("Product not found");
+//        }
+//        Product product = optionalProduct.get();
+//        System.out.println(product.getTitle());
     }
 }
