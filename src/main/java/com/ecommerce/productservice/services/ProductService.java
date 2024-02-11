@@ -7,6 +7,7 @@ import com.ecommerce.productservice.exceptions.ProductNotFoundException;
 import java.util.List;
 
 public interface ProductService {
+    // This is a comment to test git in ubuntu
     List<GenericProductDto> getAllProducts();
     GenericProductDto getProductById(Long id) throws ProductNotFoundException;
     GenericProductDto createProduct(GenericProductDto genericProductDto);
