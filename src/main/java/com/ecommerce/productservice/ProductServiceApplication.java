@@ -81,11 +81,11 @@ public class ProductServiceApplication implements CommandLineRunner {
 //        price.setValue(10000);
 //        Price savedPrice = this.priceRepository.save(price);
 //
-//        Optional<Category> optionalCategory = this.categoryRepository.findById(UUID.fromString("149bcf77-bed0-4ea1-af2d-9f033a3caac5"));
+//        Optional<Category> optionalCategory = this.categoryRepository.findById(savedCategory.getId());
 //        if (optionalCategory.isEmpty()) {
 //            throw new Exception("Category not found");
 //        }
-//        Category category = optionalCategory.get();
+//        category = optionalCategory.get();
 //
 //        Product product = new Product();
 //        product.setTitle("Laptop2");

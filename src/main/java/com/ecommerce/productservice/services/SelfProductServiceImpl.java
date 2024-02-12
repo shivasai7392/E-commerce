@@ -23,7 +23,7 @@ public class SelfProductServiceImpl implements ProductService{
     @Override
     public GenericProductDto getProductById(Long id){
         GenericProductDto genericProductDto = new GenericProductDto();
-        this.productRepository.findById(UUID.fromString("89729269-8554-4e4e-a76c-78627dfbc549")).ifPresent(product -> {
+        this.productRepository.findById(UUID.fromString("d991061e-6841-4e32-ad0f-7b2706e53394")).ifPresent(product -> {
             genericProductDto.setId(1L);
             genericProductDto.setTitle(product.getTitle());
             genericProductDto.setDescription(product.getDescription());
